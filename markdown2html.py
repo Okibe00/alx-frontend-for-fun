@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+'''Convert mardown to html
+    functions:
+        match_header(num:int, text:str)
+        _header(text:str)
+'''
 if __name__ == "__main__":
-    '''Convert mardown to html
-    '''
-
     import sys
     import os
 
@@ -18,20 +20,18 @@ if __name__ == "__main__":
             return(str):
                 html string
         '''
-
-        match num:
-            case 1:
-                return f"<h1>{text}</h1>\n"
-            case 2:
-                return f"<h2>{text}</h2>\n"
-            case 3:
-                return f"<h3>{text}</h3>\n"
-            case 4:
-                return f"<h4>{text}</h4>\n"
-            case 5:
-                return f"<h5>{text}</h5>\n"
-            case 6:
-                return f"<h6>{text}</h6>\n"
+        if num == 1:
+            return f"<h1>{text}</h1>\n"
+        elif num == 2:
+            return f"<h2>{text}</h2>\n"
+        elif num == 3:
+            return f"<h3>{text}</h3>\n"
+        elif num == 4:
+            return f"<h4>{text}</h4>\n"
+        elif num == 5:
+            return f"<h5>{text}</h5>\n"
+        elif num == 6:
+            return f"<h6>{text}</h6>\n"
 
     def _heading(text):
         '''handinle markdown heading
@@ -41,10 +41,12 @@ if __name__ == "__main__":
             return(str):
                 string of html
         '''
+
         html_string = ''
         for line in text:
             tokens = line.split(" ")
-            html_string = html_string+match_header(len(tokens[0]), tokens[1])
+            h_lvl = len(tokens[0])
+            html_string = html_string+match_header(h_lvl, line[h_lvl+1:-1])
         return html_string
 
     arg_len = len(sys.argv)
