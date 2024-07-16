@@ -1,42 +1,51 @@
 #!/usr/bin/python3
-'''Convert mardown to html
-'''
-
-
-def match_header(num, text):
-    '''match header level
-    '''
-
-    match num:
-        case 1:
-            return f"<h1>{text}</h1>\n"
-        case 2:
-            return f"<h2>{text}</h2>\n"
-        case 3:
-            return f"<h3>{text}</h3>\n"
-        case 4:
-            return f"<h4>{text}</h4>\n"
-        case 5:
-            return f"<h5>{text}</h5>\n"
-        case 6:
-            return f"<h6>{text}</h6>\n"
-
-
-def _heading(text):
-    '''handinle markdown heading
-        line(str): markdown text
-        return(str): string of html
-    '''
-    html_string = ''
-    for line in text:
-        tokens = line.split(" ")
-        html_string = html_string+match_header(len(tokens[0]), tokens[1])
-    return html_string
-
-
 if __name__ == "__main__":
+    '''Convert mardown to html
+    '''
+
     import sys
     import os
+
+    def match_header(num, text):
+        '''match header level
+
+            num(int):
+                    header level
+
+            text(str):
+                    header text
+
+            return(str):
+                html string
+        '''
+
+        match num:
+            case 1:
+                return f"<h1>{text}</h1>\n"
+            case 2:
+                return f"<h2>{text}</h2>\n"
+            case 3:
+                return f"<h3>{text}</h3>\n"
+            case 4:
+                return f"<h4>{text}</h4>\n"
+            case 5:
+                return f"<h5>{text}</h5>\n"
+            case 6:
+                return f"<h6>{text}</h6>\n"
+
+    def _heading(text):
+        '''handinle markdown heading
+            text(str):
+                markdown text
+
+            return(str):
+                string of html
+        '''
+        html_string = ''
+        for line in text:
+            tokens = line.split(" ")
+            html_string = html_string+match_header(len(tokens[0]), tokens[1])
+        return html_string
 
     arg_len = len(sys.argv)
     if arg_len < 3:
