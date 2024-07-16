@@ -8,7 +8,18 @@ if __name__ == "__main__":
     import sys
     import os
 
-    def match_header(num, text):
+    def write_file(val, file_name):
+        '''write lines to a file
+        val(str):
+            line to write
+
+            file_name(str):
+                name of file to write into
+        '''
+        with open(file_name, 'a', encoding="utf-8") as fp:
+            fp.write(val)
+
+    def match_header(num, text, file):
         '''match header level
 
             num(int):
@@ -21,19 +32,19 @@ if __name__ == "__main__":
                 html string
         '''
         if num == 1:
-            return f"<h1>{text}</h1>\n"
+            write_file(f"<h1>{text}</h1>\n", file)
         elif num == 2:
-            return f"<h2>{text}</h2>\n"
+            write_file(f"<h2>{text}</h2>\n", file)
         elif num == 3:
-            return f"<h3>{text}</h3>\n"
+            write_file(f"<h3>{text}</h3>\n", file)
         elif num == 4:
-            return f"<h4>{text}</h4>\n"
+            write_file(f"<h4>{text}</h4>\n", file)
         elif num == 5:
-            return f"<h5>{text}</h5>\n"
+            write_file(f"<h5>{text}</h5>\n", file)
         elif num == 6:
-            return f"<h6>{text}</h6>\n"
+            write_file(f"<h6>{text}</h6>\n", file)
 
-    def _heading(text):
+    def _heading(text, file):
         '''handinle markdown heading
             text(str):
                 markdown text
@@ -41,13 +52,15 @@ if __name__ == "__main__":
             return(str):
                 string of html
         '''
-
-        html_string = ''
         for line in text:
-            tokens = line.split(" ")
-            h_lvl = len(tokens[0])
-            html_string = html_string+match_header(h_lvl, line[h_lvl+1:-1])
-        return html_string
+            if line is not "\n":
+                tokens = line.split(" ")
+                h_lvl = len(tokens[0])
+                match_header(
+                    h_lvl,
+                    line[h_lvl+1:-1],
+                    file
+                )
 
     arg_len = len(sys.argv)
     if arg_len < 3:
@@ -64,8 +77,4 @@ if __name__ == "__main__":
 
     with open(markdown_file, 'r', encoding="utf-8") as fp:
         mkdown = fp.readlines()
-        html = _heading(mkdown)
-
-    with open(html_file, 'w', encoding="utf-8") as fp:
-        fp.write(html)
-        exit(0)
+        html = _heading(mkdown, html_file)
