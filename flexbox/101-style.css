@@ -1,0 +1,36 @@
+.box {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.box1 {
+  background-color: red;
+  height: 55px;
+}
+
+.box2 {
+  background-color: blue;
+  height: 70px;
+}
+
+.box3 {
+  background-color: yellow;
+}
+
+.box4 {
+  background-color: purple;
+  height: 70px;
+}
+
+.box5 {
+  background-color: cyan;
+  height: 55px;
+}
