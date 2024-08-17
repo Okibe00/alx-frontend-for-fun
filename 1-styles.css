@@ -1,0 +1,28 @@
+a {
+	text-decoration: none;
+	color: red;
+}
+
+@keyframes underline {
+	 from {
+		width: 0px;
+	}
+	to {
+		width: 112px;
+	}
+}
+a::after {
+	content: '';
+	position: absolute;
+	width: 0px;
+	height: 2px;
+	top: 43px;
+	left: 69px;
+	background-color: red;
+	transition: width 0.5s;
+}
+a:hover::after {
+	width: 112px;
+}
+
+
