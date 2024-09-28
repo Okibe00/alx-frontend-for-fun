@@ -1,0 +1,8 @@
+/*for loop*/
+$widths: 100%, 50%, 33.33333333%, 25%;
+
+@for $size from 1 through 4 {
+  .col-#{$size} {
+    width: nth($widths, $size);
+  }
+}
