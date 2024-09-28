@@ -1,0 +1,10 @@
+/*make class using @each rule*/
+@import '11-photos';
+
+$ext: '.jpg';
+
+@each $name in $list-names {
+  .photo-#{$name} {
+    background-image: url(photos/$name#{$ext});
+  }
+}
