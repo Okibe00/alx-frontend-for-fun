@@ -1,0 +1,7 @@
+/*for loop*/
+$unit: 'px';
+@for $size from 1 to 6 {
+  h#{$size} {
+    font-size: unquote('#{$size}px');
+  }
+}
