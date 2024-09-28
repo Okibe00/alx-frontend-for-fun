@@ -1,0 +1,14 @@
+/*create a mixin*/
+
+@mixin margin($size: 10px) {
+  margin-left: $size;
+  margin-right: $size;
+}
+
+body {
+  @include margin($size: 10px);
+}
+
+div {
+  @include margin($size: 15px);
+}
