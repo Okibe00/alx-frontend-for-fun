@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;;EAEE;AAEF,OAAQ;EACN,KAAK,EAFM,OAAO",
+"sources": ["1-color_variable.scss"],
+"names": [],
+"file": "output.css"
+}
